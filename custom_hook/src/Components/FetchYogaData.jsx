@@ -9,7 +9,7 @@ const FetchYogaData = () => {
             <h1>Yoga Poses</h1>
             <ul>
                 {data && data.map((pose, idx) => (
-                    <li key={idx}>
+                    <li key={idx} style={{listStyleType: "none", marginBottom: "40px"}}>
                         <h2>{pose.name}</h2>
                         <p><strong>Benefits:</strong>{pose.benefits}</p>
                         <p><strong>Duration: {pose.time_duration}</strong></p>
