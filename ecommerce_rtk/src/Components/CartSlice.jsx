@@ -1,0 +1,59 @@
+
+import { createSlice } from '@reduxjs/toolkit'
+
+const initialState = {
+  cartItems: [],
+  disabledProducts: []
+}
+
+const CartSlice = createSlice({
+  name: 'cart',
+  initialState,
+  reducers: {
+    addItemToCart(state,action) {
+      const existingItem = state.cartItems.find(item => item.id === action.payload.id)
+
+      if (existingItem) {
+        existingItem.quantity += 1 
+      } else {
+        state.cartItems.push({...action.payload,quantity: 1})
+      }
+    },
+    removeItemFromCart(state,action) {
+      state.cartItems = state.cartItems.filter(item => item.id !== action.payload)
+    },
+    clearCart(state,action) {
+      state.cartItems = []
+    },
+    increaseItemQuantity(state,action) {
+      const itemToIncrease = state.cartItems.find(item => item.id === action.payload)
+      if (itemToIncrease) {
+        itemToIncrease.quantity += 1
+      }
+    },
+    decreaseItemQuantity(state,action) {
+      const itemToDecrease = state.cartItems.find(item => item.id === action.payload)
+      if (itemToDecrease) {
+        itemToDecrease.quantity -= 1
+      }
+    },
+    disableProduct(state,action) {
+      state.disabledProducts.push(action.payload)
+    },
+    enableProduct(state,action) {
+      state.disabledProducts = state.disabledProducts.filter(prodId => prodId !== action.payload)
+    }
+  }
+})
+
+export const {
+  addItemToCart,
+  removeItemFromCart,
+  clearCart,
+  increaseItemQuantity,
+  decreaseItemQuantity,
+  disableProduct,
+  enableProduct
+} = CartSlice.actions
+
+export default CartSlice.reducer
