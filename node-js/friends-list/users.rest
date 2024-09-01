@@ -1,0 +1,51 @@
+@PORT=5001
+@PROTOCOL=http
+
+
+###
+POST {{PROTOCOL}}://localhost:{{PORT}}/login
+content-type: application/json
+
+{
+  "username": "clario",
+  "password": "pw"
+}
+
+###
+GET {{PROTOCOL}}://localhost:{{PORT}}/user
+
+###
+GET {{PROTOCOL}}://localhost:{{PORT}}/user?firstName=John&lastName=white
+
+###
+GET {{PROTOCOL}}://localhost:{{PORT}}/user/lastName/white1
+
+###
+GET {{PROTOCOL}}://localhost:{{PORT}}/user/sort
+
+###
+GET {{PROTOCOL}}://localhost:{{PORT}}/user/joyalwhite@gamil.com11
+
+###
+GET {{PROTOCOL}}://localhost:{{PORT}}/user/joyalwhite@gamil.com
+
+###
+# POST {{PROTOCOL}}://localhost:{{PORT}}/user
+# content-type: application/json
+
+# {
+#   "firstName":"Jon",
+#   "lastName":"Lovato",
+#   "email":"jonlovato@theworld.com",
+#   "DOB":"10/10/1995"
+# }
+
+POST {{PROTOCOL}}://localhost:{{PORT}}/user?firstName=Jon&lastName=Lovato&email=jonlovato@theworld.com&DOB=10/10/1995
+
+###
+PUT {{PROTOCOL}}://localhost:{{PORT}}/user/johnsmith@gamil.com?DOB=1/1/1972&lastName=clario
+
+###
+DELETE {{PROTOCOL}}://localhost:{{PORT}}/user/johnsmith@gamil.com
+
+
