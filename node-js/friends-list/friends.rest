@@ -1,0 +1,48 @@
+@PORT = 5000
+
+POST http://localhost:{{PORT}}/register
+content-type: application/json
+
+{
+    "username": "uname",
+    "password": "pw"
+}
+
+###
+POST http://localhost:{{PORT}}/login
+content-type: application/json
+
+{
+    "username": "uname",
+    "password": "pw"
+}
+
+###
+GET http://localhost:{{PORT}}/friends
+
+###
+GET http://localhost:{{PORT}}/friends/annasmith@gamil.com
+
+###
+POST http://localhost:{{PORT}}/friends
+content-type: application/json
+
+{
+    "email": "asdf@asdf.com",
+    "firstName": "new",
+    "lastName": "friend",
+    "DOB": "01-01-1980"
+}
+
+###
+PUT http://localhost:{{PORT}}/friends/asdf@asdf.com
+content-type: application/json
+
+{
+    "firstName": "changed fisrt",
+    "lastName": "changed last",
+    "DOB": "01-01-1982"
+}
+
+###
+DELETE http://localhost:{{PORT}}/friends/johnsmith@gamil.com
